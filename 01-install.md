@@ -37,7 +37,8 @@ import sklearn
 
 Did you install Python 2 or 3? Why? How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
->> I installed Anaconda 3.4 but seem to have Python 2.7 working on my computer. But none of the above commands seem to work correctly. I will have to sort things out. Installing the newest version of Python is good for using new tools. However having the older version is also good for running older scripts or tools. To check which version of Python is installed, I can write in the terminal: "python --version". Also executing the python application displays the application information.
+>> I installed Anaconda 3.4 but seem to have Python 2.7 working on my computer. But none of the above commands seem to work correctly. I will have to sort things out. Installing the newest version of Python is good for using new tools. However having the older version is also good for running older scripts or tools. To check which version of Python is installed, I can write in the terminal: "python --version". Also executing the python application displays the application information. 
+>> Using Anaconda requires to launch it, might have seemed obvious. But it works.
 
 ---
 
