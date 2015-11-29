@@ -12,7 +12,7 @@ For quick and easy interactive practice with Python, many people enjoy [Codecade
 
 How are Python lists and tuples similar and different? Which will work as keys in dictionaries? Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Lists are made up of different values generally of the same type. Items can be added and removed from a list and even modified within. Lists have a length and the values of the items within the list can be called with indexes. Similarly tuples have a length and their items are assigned to an index in the tuple. However once created a tuple cannot be modified. Because of this, tuples would work best as keys in dictionnaries since we would not want keys that could be modified.
 
 ---
 
