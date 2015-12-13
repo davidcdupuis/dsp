@@ -18,9 +18,9 @@ def donuts(count):
     'Number of donuts: many'
     """
     if count < 10:
-        print "Number of donuts: " + str(count)
+        print("Number of donuts: " + str(count))
     else:
-        print "Number of donuts: many"
+        print("Number of donuts: many")
 
 def both_ends(s):
     """
@@ -38,9 +38,9 @@ def both_ends(s):
     'xyyz'
     """
     if len(s) > 2:
-        print s[0] + s[1] + s[len(s)-2] + s[len(s)-1]
+        print(s[0] + s[1] + s[len(s)-2] + s[len(s)-1])
     else:
-        print ''
+        print('')
 
 def fix_start(s):
     """
@@ -64,7 +64,7 @@ def fix_start(s):
             result += '*'
         else:
             result += s[i]
-    print result
+    print(result)
 
 def mix_up(a, b):
     """
@@ -86,7 +86,7 @@ def mix_up(a, b):
     result += ' ' + a[0]  + a[1]
     for i in range(2,len(b)):
         result += b[i]
-    print result
+    print(result)
 
 def verbing(s):
     """
@@ -113,9 +113,9 @@ def verbing(s):
             word += 'ly'
         else:
             word += 'ing'
-        print word
+        print(word)
     else:
-        print word
+        print(word)
 
 def not_bad(s):
     """
@@ -133,7 +133,7 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
-    print str(re.sub('not[\s\w]*bad','good',s))
+    print(str(re.sub('not[\s\w]*bad','good',s)))
 
 def front_back(a, b):
     """
@@ -151,57 +151,57 @@ def front_back(a, b):
     'KitDontenut'
     """
     if len(a) % 2 == 0:
-        a1 = a[:len(a)/2:1]
-        a2 = a[len(a)/2:len(a):1]
+        a1 = a[:int(len(a)/2):1]
+        a2 = a[int(len(a)/2):len(a):1]
     else:
-        a1 = a[:len(a)/2+1:1]
-        a2 = a[len(a)/2+1:len(a):1]
+        a1 = a[:int(len(a)/2+1):1]
+        a2 = a[int(len(a)/2+1):len(a):1]
 
     if len(b) % 2 == 0:
-        b1 = b[:len(b)/2:1]
-        b2 = b[len(b)/2:len(b):1]
+        b1 = b[:int(len(b)/2):1]
+        b2 = b[int(len(b)/2):len(b):1]
     else:
-        b1 = b[:len(b)/2+1:1]
-        b2 = b[len(b)/2+1:len(b):1]
+        b1 = b[:int(len(b)/2+1):1]
+        b2 = b[int(len(b)/2+1):len(b):1]
 
-    print a1 + b1 + a2 + b2
+    print(a1 + b1 + a2 + b2)
 
-print "\nDonuts: "
+print("\nDonuts: ")
 donuts(4)
 donuts(9)
 donuts(10)
 donuts(40)
 
-print "\nBoth ends: "
+print("\nBoth ends: ")
 both_ends('spring')
 both_ends('Hello')
 both_ends('a')
 both_ends('xyz')
 
-print "\nFix Start:"
+print("\nFix Start:")
 fix_start('babble')
 fix_start('aardvark')
 fix_start('google')
 fix_start('donut')
 
-print "\nMix Up:"
+print("\nMix Up:")
 mix_up('mix', 'pod')
 mix_up('dog', 'dinner')
 mix_up('gnash', 'sport')
 mix_up('pezzy', 'firm')
 
-print "\nVerbing:"
+print("\nVerbing:")
 verbing('hail')
 verbing('swiming')
 verbing('do')
 
-print "\nNot Bad:"
+print("\nNot Bad:")
 not_bad('This movie is not so bad')
 not_bad('This dinner is not that bad!')
 not_bad('This tea is not hot')
 not_bad("It's bad yet not")
 
-print "\nFront Back:"
+print("\nFront Back:")
 front_back('abcd', 'xy')
 front_back('abcde', 'xyz')
 front_back('Kitten', 'Donut')
