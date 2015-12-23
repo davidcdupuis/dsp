@@ -1,5 +1,6 @@
 import csv
 import itertools
+from collections import OrderedDict
 
 '''
 We cannot pass the csvReader as function argument. So in order to save it,
@@ -10,6 +11,14 @@ The second class is Person and stores the information for each Person in the Fac
 class Person:
   def __init__(self,name,title,email,degrees):
     self.name = name
+
+    #get first name and last name for later user (Q7 and Q8)
+    nameValues = self.name.split(None)
+    self.firstName = nameValues[0]
+    if len(self.firstName.replace('.','')) == 1: # this makes sure the fist name is not an initial (ex: J. Richard Landis)
+      self.firstName = nameValues[1]
+    self.lastName = nameValues[-1]
+
     self.title = title
     self.email = email
     self.degrees = degrees
@@ -110,6 +119,16 @@ class Faculty:
     for item in n_items:
       print(item)
 
+  def saveEmailsToCSV(self):
+    f = open('emails.csv','wt')
+    try:
+      writer = csv.writer(f)
+      for email in self.emails:
+        writer.writerow([email])
+    finally:
+      f.close()
+    print('\nEmails were saved to emails.csv')
+
   #Contains answer to Q6 (question 6)
   def buildDictionaryQ6(self):
     dic = {}
@@ -128,13 +147,27 @@ class Faculty:
   def buildDictionaryQ7(self):
     dic = {}
     for person in self.facultyPersonnel:
-      nameValues = person.name.split(None)
-      firstName = nameValues[0]
-      lastName = nameValues[-1]
-      dic[(firstName,lastName)] = [person.degrees,person.title,person.email]
-
+      dic[(person.firstName,person.lastName)] = [person.degrees,person.title,person.email]
     print("\nNew dictionary format (Q7):")
     self.printNElementsFromDict(3,dic)
+
+  def buildSortedDictionaryQ8(self):
+    dic = {}
+    self.facultyPersonnel.sort(key=lambda x: x.lastName, reverse=True)
+    
+    for person in self.facultyPersonnel:
+      print(person.firstName, person.lastName)
+      dic[(person.firstName,person.lastName)] = [person.degrees,person.title,person.email]
+    
+    print("\nNew sorted by last name dictionary format (Q8):")
+    self.printNElementsFromDict(3,dic)
+
+#Q8. Sort dictionary from question 7 with tuple as key
+def printDictSortedByLastName(dict):
+  it = iter(sorted(dict.items()))
+  for item in it:
+    print(item)
+
 
 with open('faculty.csv','rt') as csvfile:
   dictReader = csv.DictReader(csvfile,skipinitialspace = True)
@@ -160,7 +193,7 @@ faculty.printEmailDomains()
 faculty.printUniqueDomains()
 
 #Q5. Write email addresses from Part I to csv file
-
+#faculty.saveEmailsToCSV()
 
 '''
 Q6. Create a dictionary in the below format:
@@ -188,4 +221,13 @@ professor_dict = {('Susan', 'Ellenberg'): ['Ph.D.', 'Professor', 'sellenbe@upenn
                 ('Hongzhe','Li'): ['Ph.D.', 'Professor', 'hongzhe@upenn.edu']
             }
 '''
-faculty.buildDictionaryQ7()
+new_dic = faculty.buildDictionaryQ7()
+
+#Note: The current dictionary is not printing by first name because the data extracted from the csv was not sorted by first name
+#Q8. It looks like the current dictionary is printing by first name. Sort by last name and print the first 3 key and value pairs.
+#faculty.buildSortedDictionaryQ8()
+print('\n')
+new_ordered_dic = OrderedDict(sorted(new_dic.items(), key = lambda x: x[0][1]))
+print(new_ordered_dic)
+
+
